@@ -1,6 +1,7 @@
 package com.example.cloud_music_java_self.component.splash.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,7 +15,11 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 public class SplashActivity extends BaseLogicActivity {
 
+    private static final String TAG = "SplashActivity";
+
     private TextView copyrightView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +69,13 @@ public class SplashActivity extends BaseLogicActivity {
     private void showTermsServiceAgreementDialog() {
         TermServiceDialogFragment.show(getSupportFragmentManager(), new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v) {// 点击fragment中的同意后，应该执行什么
+                prepareNext();
             }
         });
     }
-
+    private void prepareNext() {
+        Log.d(TAG, "同意用户协议后要执行的操作");
+    }
 
 }

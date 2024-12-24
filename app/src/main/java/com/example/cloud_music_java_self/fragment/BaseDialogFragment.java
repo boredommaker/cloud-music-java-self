@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -63,6 +64,17 @@ public abstract class BaseDialogFragment extends DialogFragment {
         initViews();
         initDatum();
         initListeners();
+    }
+
+
+    /**
+     * 给子类的Fragment提供一个findViewById，这样就不用重复写getView()了
+     * @param id
+     * @return
+     * @param <T>
+     */
+    public <T extends View> T findViewById(@IdRes int id) {// 只能传R.id.xxx
+        return getView().findViewById(id);
     }
 
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/padding_large">
 
@@ -30,4 +31,26 @@
             android:textColor="?attr/colorOnSurface"
             android:textSize="@dimen/text_meddle" />
     </ScrollView>
+
+    <!--同意按钮-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/primary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/super_button_height"
+        android:layout_marginTop="@dimen/padding_large"
+        android:text="@string/agree"
+        app:cornerRadius="@dimen/d27_5" />
+
+    <!--不同意按钮-->
+    <Button
+        android:id="@+id/disagree"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/padding_meddle"
+        android:background="@color/transparent"
+        android:text="@string/disagree"
+        android:textColor="@color/black80"
+        android:textSize="@dimen/text_small" />
+
 </LinearLayout>
