@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+BaseActivity         <|--    BaseCommonActivity
+BaseCommonActivity   <|--    BaseLogicActivity
+BaseLogicActivity    <|--    BaseTitleActivity
+BaseLogicActivity    <|--    SplashActivity
+
+@enduml

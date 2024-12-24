@@ -3,25 +3,34 @@ package com.example.cloud_music_java_self.component.splash.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cloud_music_java_self.R;
+import com.example.cloud_music_java_self.activity.BaseLogicActivity;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
 import com.example.cloud_music_java_self.util.SuperDateUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseLogicActivity {
+
+    private TextView copyrightView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+    }
 
-        //设置沉浸式状态栏
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+
+
+        //设置沉浸式状态栏 -> 全屏
         QMUIStatusBarHelper.translucent(this);
 
-//        //状态栏文字黑色
-//        QMUIStatusBarHelper.setStatusBarLightMode(this);
+
+        // 状态栏文本颜色
         if (SuperDarkUtil.isDark(this)) {
             // 黑色主题，状态栏文字白色
             QMUIStatusBarHelper.setStatusBarDarkMode(this);
@@ -31,10 +40,25 @@ public class SplashActivity extends AppCompatActivity {
         }
 
 
+
+        copyrightView = findViewById(R.id.copyright);
+    }
+
+    @Override
+    protected void initDatum() {
+        super.initDatum();
+
+
+
         //设置版本年份
         int year = SuperDateUtil.currentYear();
-
-        TextView copyrightView = findViewById(R.id.copyright);
         copyrightView.setText(getResources().getString(R.string.copyright, year));
     }
+
+    @Override
+    protected void initListeners() {
+        super.initListeners();
+    }
+
+
 }
