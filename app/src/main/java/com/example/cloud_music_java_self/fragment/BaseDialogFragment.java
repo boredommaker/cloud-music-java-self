@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.cloud_music_java_self.activity.BaseCommonActivity;
+
 /**
  * 所有DialogFragment对话框父类
  */
@@ -77,4 +79,13 @@ public abstract class BaseDialogFragment extends DialogFragment {
         return getView().findViewById(id);
     }
 
+
+    /**
+     * 获取界面方法
+     *
+     * @return
+     */
+    protected BaseCommonActivity getHostActivity() {
+        return (BaseCommonActivity) getActivity();
+    }
 }

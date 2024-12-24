@@ -80,14 +80,14 @@ public class TermServiceDialogFragment extends BaseDialogFragment {
         primaryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {// 同意后应该让SplashActivity处理，比如进入到主页面
-                dismiss();
+                dismiss();// 关掉fragment
                 onAgreementClickListener.onClick(view);
             }
         });
         disagreeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();// 关掉fragment
+                dismiss();
                 SuperProcessUtil.killApp();
             }
         });
