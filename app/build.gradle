@@ -30,6 +30,23 @@ android {
 
 dependencies {
 
+    //官方兼容组件，像AppCompatActivity就是该依赖里面的
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+
+    //Material Design组件，像FloatingActionButton就是该依赖里面的
+    implementation 'com.google.android.material:material:1.4.0'
+
+    //官方提供的约束布局，像ConstraintLayout就是该依赖里面的
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+
+    //UI框架，主要是用他的工具类，也可以单独拷贝出来
+    //https://qmuiteam.com/android/get-started
+    implementation 'com.qmuiteam:qmui:2.0.1'
+
+
+
+
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
