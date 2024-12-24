@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cloud_music_java_self.R;
+import com.example.cloud_music_java_self.util.SuperDarkUtil;
 import com.example.cloud_music_java_self.util.SuperDateUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
@@ -19,8 +20,16 @@ public class SplashActivity extends AppCompatActivity {
         //设置沉浸式状态栏
         QMUIStatusBarHelper.translucent(this);
 
-        //状态栏文字黑色
-        QMUIStatusBarHelper.setStatusBarLightMode(this);
+//        //状态栏文字黑色
+//        QMUIStatusBarHelper.setStatusBarLightMode(this);
+        if (SuperDarkUtil.isDark(this)) {
+            // 黑色主题，状态栏文字白色
+            QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        } else {
+            // 白色主题，状态栏文字黑色
+            QMUIStatusBarHelper.setStatusBarLightMode(this);
+        }
+
 
         //设置版本年份
         int year = SuperDateUtil.currentYear();
