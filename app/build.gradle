@@ -26,6 +26,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+    viewBinding {
+        //开启视图绑定，用来替代findViewById
+        //官方文档：https://developer.android.com/topic/libraries/view-binding
+        enabled = true
+    }
 }
 
 dependencies {
@@ -43,6 +49,11 @@ dependencies {
     //https://qmuiteam.com/android/get-started
     implementation 'com.qmuiteam:qmui:2.0.1'
 
+
+    //动态处理权限
+    //https://github.com/permissions-dispatcher/PermissionsDispatcher
+    implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.8.0"
+    annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
 
 
 
