@@ -5,6 +5,8 @@ import android.text.style.ClickableSpan;
 
 import androidx.annotation.NonNull;
 
+import com.example.common.TestClass;
+
 /**
  * 自定义ClickableSpan
  * 目的是去除下划线

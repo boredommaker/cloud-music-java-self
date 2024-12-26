@@ -2,14 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+//引入上层目录的common.gradle文件内容
+apply from: '../common.gradle'
+
 android {
     namespace 'com.example.cloud_music_java_self'
-    compileSdk 34
+
 
     defaultConfig {
         applicationId "com.example.cloud_music_java_self"
-        minSdk 26
-        targetSdk 34
+
         versionCode 1
         versionName "1.0"
 
@@ -22,10 +24,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
+
 
     viewBinding {
         //开启视图绑定，用来替代findViewById
@@ -55,6 +54,10 @@ dependencies {
     implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.8.0"
     annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
 
+
+
+    // 引入其他 module
+    implementation project(':super-j')
 
 
 
