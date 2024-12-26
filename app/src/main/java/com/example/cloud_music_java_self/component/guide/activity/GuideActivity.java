@@ -43,7 +43,7 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
     protected void initDatum() {
         super.initDatum();
         //创建适配器
-        adapter = new GuideAdapter(getSupportFragmentManager());
+        adapter = new GuideAdapter(getHostActivity(), getSupportFragmentManager());
 
         //适配器和控价绑定
         binding.list.setAdapter(adapter);
