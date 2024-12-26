@@ -1,6 +1,7 @@
 package com.example.cloud_music_java_self.component.splash.activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.Manifest;
 import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseLogicActivity;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
+import com.example.cloud_music_java_self.component.guide.activity.GuideActivity;
 import com.example.cloud_music_java_self.component.splash.fragment.TermServiceDialogFragment;
 import com.example.cloud_music_java_self.databinding.ActivitySplashBinding;
 import com.example.cloud_music_java_self.util.DefaultPreferenceUtil;
@@ -99,7 +101,15 @@ public class SplashActivity extends BaseViewModelActivity<ActivitySplashBinding>
 
     private void prepareNext() {
         Log.d(TAG, "prepareNext");
+
+        startActivityThenFinishThis(GuideActivity.class);
+//        Intent intent = new Intent(this, GuideActivity.class);
+//        startActivity(intent);
+//
+//        finish();
     }
+
+
 
     /**
      * 检查是否有需要的权限
