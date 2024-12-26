@@ -9,12 +9,16 @@ BaseViewModelActivity    <|--    SplashActivity
 BaseViewModelActivity <|-- GuideActivity
 
 DialogFragment    <|--    BaseDialogFragment
-BaseDialogFragment   <|--    BaseViewModelFragment
-BaseViewModelFragment <|--    TermServiceDialogFragment
+BaseDialogFragment   <|--    BaseViewModelDialogFragment
+BaseViewModelDialogFragment <|--    TermServiceDialogFragment
 
 
 BaseLogicActivity <|-- BaseViewModelActivity
 
 Fragment   <|--   BaseFragment
 BaseFragment  <|-- BaseCommonFragment
+BaseCommonFragment <|-- BaseViewModelFragment
+
+
+BaseViewModelFragment  <|-- GuideFragment
 @enduml

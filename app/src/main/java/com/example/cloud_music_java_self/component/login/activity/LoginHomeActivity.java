@@ -1,0 +1,24 @@
+package com.example.cloud_music_java_self.component.login.activity;
+
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.example.cloud_music_java_self.R;
+
+
+/**
+ * 登录主界面
+ */
+public class LoginHomeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_home);
+    }
+}

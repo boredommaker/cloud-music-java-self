@@ -1,6 +1,7 @@
 package com.example.cloud_music_java_self.component.guide.activity;
 
 
+import android.content.Intent;
 import android.view.View;
 
 import com.example.cloud_music_java_self.MainActivity;
@@ -8,6 +9,7 @@ import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.component.guide.adapter.GuideAdapter;
 import com.example.cloud_music_java_self.databinding.ActivityGuideBinding;
+import com.example.cloud_music_java_self.util.Constant;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
@@ -82,8 +84,14 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
     public void onClick(View v) {
         if (v.getId() == R.id.login_or_register) {
 
-            setShowGuide();
+            Intent intent = new Intent(getHostActivity(), MainActivity.class);
+            intent.setAction(Constant.ACTION_LOGIN);
+            startActivity(intent);
 
+
+
+            setShowGuide();
+            finish();
         }
         else if (v.getId() == R.id.experience_now) {
 
