@@ -8,6 +8,8 @@ import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.component.guide.adapter.GuideAdapter;
 import com.example.cloud_music_java_self.databinding.ActivityGuideBinding;
+import com.example.cloud_music_java_self.util.SuperDarkUtil;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,22 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
 
     private GuideAdapter adapter;
 
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+        //设置沉浸式状态栏
+        QMUIStatusBarHelper.translucent(this);
+
+        if (SuperDarkUtil.isDark(this)) {
+            //状态栏文字白色
+            QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        } else {
+            //状态栏文字黑色
+            QMUIStatusBarHelper.setStatusBarLightMode(this);
+        }
+    }
+
     @Override
     protected void initDatum() {
         super.initDatum();
@@ -30,6 +48,15 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
         //适配器和控价绑定
         binding.list.setAdapter(adapter);
 
+        // 指示器部分
+        //让指示器根据列表控件配合工作
+        binding.indicator.setViewPager(binding.list);
+
+        //适配器注册数据源观察者
+        adapter.registerDataSetObserver(binding.indicator.getDataSetObserver());
+
+
+
         //准备数据
         List<Integer> datum = new ArrayList<>();
         datum.add(R.drawable.guide1);
@@ -37,8 +64,8 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
         datum.add(R.drawable.guide3);
         datum.add(R.drawable.guide4);
         datum.add(R.drawable.guide5);
-        datum.add(R.drawable.splash_logo);
-        datum.add(R.drawable.login_netease);
+
+
         //设置数据到适配器
         adapter.setDatum(datum);
     }
