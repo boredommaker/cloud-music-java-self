@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import android.Manifest;
 import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseLogicActivity;
+import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.component.splash.fragment.TermServiceDialogFragment;
 import com.example.cloud_music_java_self.databinding.ActivitySplashBinding;
 import com.example.cloud_music_java_self.util.DefaultPreferenceUtil;
@@ -32,21 +33,21 @@ import permissions.dispatcher.RuntimePermissions;
  */
 //声明当前界面有动态获取权限逻辑
 @RuntimePermissions
-public class SplashActivity extends BaseLogicActivity {
+public class SplashActivity extends BaseViewModelActivity<ActivitySplashBinding> {
 
     private static final String TAG = "SplashActivity";
 //    private TextView copyrightView;
-    private ActivitySplashBinding binding;
+//    private ActivitySplashBinding binding;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_splash);
-        // 少写了findViewById()
-        binding = ActivitySplashBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+////        setContentView(R.layout.activity_splash);
+//        // 少写了findViewById()
+//        binding = ActivitySplashBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//
+//    }
 
     @Override
     protected void initViews() {

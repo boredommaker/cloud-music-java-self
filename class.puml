@@ -5,8 +5,12 @@ AppCompatActivity    <|--    BaseActivity
 BaseActivity         <|--    BaseCommonActivity
 BaseCommonActivity   <|--    BaseLogicActivity
 BaseLogicActivity    <|--    BaseTitleActivity
-BaseLogicActivity    <|--    SplashActivity
+BaseViewModelActivity    <|--    SplashActivity
 
-DialogActivity       <|--    BaseDialogActivity
-BaseDialogActivity   <|--    TermServiceDialogActivity
+DialogFragment    <|--    BaseDialogFragment
+BaseDialogFragment   <|--    BaseViewModelFragment
+BaseViewModelFragment <|--    TermServiceDialogFragment
+
+
+BaseLogicActivity <|-- BaseViewModelActivity
 @enduml

@@ -14,7 +14,9 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.cloud_music_java_self.R;
+import com.example.cloud_music_java_self.databinding.FragmentDialogTermServiceBinding;
 import com.example.cloud_music_java_self.fragment.BaseDialogFragment;
+import com.example.cloud_music_java_self.fragment.BaseViewModelDialogFragment;
 import com.example.cloud_music_java_self.util.ScreenUtil;
 import com.example.cloud_music_java_self.util.SuperTextUtil;
 import com.example.superui.process.SuperProcessUtil;
@@ -23,7 +25,7 @@ import com.google.android.material.button.MaterialButton;
 /**
  * 服务条款和隐私协议对话框
  */
-public class TermServiceDialogFragment extends BaseDialogFragment {
+public class TermServiceDialogFragment extends BaseViewModelDialogFragment<FragmentDialogTermServiceBinding> {
 
     private static final String TAG = "TermServiceDialogFragment";
 
