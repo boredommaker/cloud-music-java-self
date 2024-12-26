@@ -102,7 +102,7 @@ public class SplashActivity extends BaseViewModelActivity<ActivitySplashBinding>
     private void prepareNext() {
         Log.d(TAG, "prepareNext");
 
-        startActivityThenFinishThis(GuideActivity.class);
+        startActivityAfterFinishThis(GuideActivity.class);
 //        Intent intent = new Intent(this, GuideActivity.class);
 //        startActivity(intent);
 //

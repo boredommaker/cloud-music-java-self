@@ -13,7 +13,7 @@ public class BaseCommonActivity extends BaseActivity {
      * 启动另一个页面并关掉当前页面
      * @param clazz
      */
-    protected void startActivityThenFinishThis(Class<GuideActivity> clazz) {
+    protected void startActivityAfterFinishThis(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
         finish();
