@@ -12,10 +12,13 @@ import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.api.DefaultService;
 import com.example.cloud_music_java_self.api.NetworkModule;
+import com.example.cloud_music_java_self.component.comment.model.Comment;
 import com.example.cloud_music_java_self.component.guide.adapter.GuideAdapter;
 import com.example.cloud_music_java_self.component.sheet.model.SheetWrapper;
 import com.example.cloud_music_java_self.config.Config;
 import com.example.cloud_music_java_self.databinding.ActivityGuideBinding;
+import com.example.cloud_music_java_self.model.response.DetailResponse;
+import com.example.cloud_music_java_self.model.response.ListResponse;
 import com.example.cloud_music_java_self.util.Constant;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
@@ -145,23 +148,75 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
      */
     private void testGetRetrofitGet() {
         service.sheets(null, 2)
-                .subscribeOn(Schedulers.io())// 放在子线程
-                .observeOn(AndroidSchedulers.mainThread())// 以下代码在哪个线程执行执行
-                .subscribe(new Observer<SheetWrapper>() {
+                .subscribeOn(Schedulers.io())// 放在子线程执行
+                .observeOn(AndroidSchedulers.mainThread())// 以下代码在主线程执行
+                .subscribe(new Observer<ListResponse<Sheet>>() {
                     @Override
                     public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull SheetWrapper s) {
-                        Sheet sheet = s.getData().getData().get(0);
-                        Log.d(TAG, "onNext: " + s);
+                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull ListResponse<Sheet> data) {
+                        Sheet sheet = data.getData().getData().get(0);
+                        Log.d(TAG, "onNext: " + sheet.getTitle());
                     }
 
                     @Override
                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
                         Log.d(TAG, "onError: " + e.getLocalizedMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+        service.comments()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ListResponse<Comment>>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull ListResponse<Comment> data) {
+                        Comment sheet = data.getData().getData().get(0);
+                        Log.d(TAG, "onNext: " + sheet.getContent());
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        Log.d(TAG, "onError: " + e.getLocalizedMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+        service.sheetDetail("ixuea", "1")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<DetailResponse<Sheet>>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull DetailResponse<Sheet> data) {
+                        Log.d(TAG, "onNext: " + data.getData().getTitle());
+
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        Log.e(TAG, "onError: " + e.getLocalizedMessage());
                     }
 
                     @Override

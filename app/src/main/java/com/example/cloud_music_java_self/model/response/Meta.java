@@ -1,13 +1,13 @@
-package com.example.cloud_music_java_self.model;
+package com.example.cloud_music_java_self.model.response;
 
 import com.example.cloud_music_java_self.component.sheet.model.Sheet;
 
 import java.util.List;
 
 /**
- * 解析列表网络请求,带分页的
+ * 解析列表网络请求
  */
-public class Meta {
+public class Meta<T> {
     /**
      * 有多少条
      */
@@ -33,13 +33,13 @@ public class Meta {
      */
     private Integer next;
 
-    private List<Sheet> data;
+    private List<T> data;
 
-    public List<Sheet> getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(List<Sheet> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 

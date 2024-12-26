@@ -1,11 +1,9 @@
-package com.example.cloud_music_java_self.component.sheet.model;
-
-import com.example.cloud_music_java_self.model.response.Meta;
+package com.example.cloud_music_java_self.model.response;
 
 /**
- * 用来解析歌单列表数据
+ * 通用网络请求响应模型
  */
-public class SheetWrapper {
+public class BaseResponse {
     /**
      * 状态码
      * 等于0表示成功
@@ -18,8 +16,14 @@ public class SheetWrapper {
      */
     private String message;
 
-    private Meta data;
-
+    /**
+     * 是否成功
+     *
+     * @return
+     */
+    public boolean isSucceeded() {
+        return status == 0;
+    }
 
     public int getStatus() {
         return status;
@@ -35,13 +39,5 @@ public class SheetWrapper {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Meta getData() {
-        return data;
-    }
-
-    public void setData(Meta data) {
-        this.data = data;
     }
 }
