@@ -15,5 +15,6 @@ BaseViewModelFragment <|--    TermServiceDialogFragment
 
 BaseLogicActivity <|-- BaseViewModelActivity
 
-
+Fragment   <|--   BaseFragment
+BaseFragment  <|-- BaseCommonFragment
 @enduml
