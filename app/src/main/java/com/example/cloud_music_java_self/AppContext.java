@@ -10,19 +10,24 @@ import com.tencent.mmkv.MMKV;
  */
 public class AppContext extends Application {
     private static final String TAG = "AppContext";
+    private static AppContext instance;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initMMKV();
+    public static AppContext getInstance() {
+        return instance;
     }
 
     /**
      * 初始化 腾讯开源的高性能keyValue存储，用来替代系统的SharedPreferences
-     * 只执行一次
      */
     private void initMMKV() {
         String rootDir = MMKV.initialize(this);
         Log.d(TAG, "initMMKV: " + rootDir);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+        initMMKV();
     }
 }

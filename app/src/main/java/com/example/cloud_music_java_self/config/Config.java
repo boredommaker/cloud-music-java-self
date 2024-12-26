@@ -12,6 +12,12 @@ public class Config {
      * 默认延时时间
      */
     public static final long SPLASH_DEFAULT_DELAY_TIME = 1000;
+
+    /**
+     * 是否是调试模式
+     */
+    public static final boolean DEBUG = BuildConfig.DEBUG;
+
     /**
      * 端点
      */
@@ -21,4 +27,11 @@ public class Config {
      * 资源端点
      */
     public static String RESOURCE_ENDPOINT = BuildConfig.RESOURCE_ENDPOINT;
+
+    /**
+     * 网络缓存目录大小
+     * 100M
+     */
+    public static final long NETWORK_CACHE_SIZE = 1024 * 1024 * 100;
+
 }
