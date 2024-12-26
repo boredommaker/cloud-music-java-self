@@ -1,22 +1,21 @@
 package com.example.cloud_music_java_self.component.splash.activity;
 
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
 
 
 import android.Manifest;
+
+import com.example.cloud_music_java_self.MainActivity;
 import com.example.cloud_music_java_self.R;
-import com.example.cloud_music_java_self.activity.BaseLogicActivity;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.component.guide.activity.GuideActivity;
 import com.example.cloud_music_java_self.component.splash.fragment.TermServiceDialogFragment;
+import com.example.cloud_music_java_self.config.Config;
 import com.example.cloud_music_java_self.databinding.ActivitySplashBinding;
 import com.example.cloud_music_java_self.util.DefaultPreferenceUtil;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
@@ -99,16 +98,29 @@ public class SplashActivity extends BaseViewModelActivity<ActivitySplashBinding>
         });
     }
 
-    private void prepareNext() {
+    private void prepareNext() {// 同意权限后
         Log.d(TAG, "prepareNext");
 
-        startActivityAfterFinishThis(GuideActivity.class);
-//        Intent intent = new Intent(this, GuideActivity.class);
-//        startActivity(intent);
-//
-//        finish();
+        if (sp.isShowGuide()) {
+            startActivityAfterFinishThis(GuideActivity.class);
+            return ;
+        } else {
+
+            binding.copyright.postDelayed(new Runnable() {// 延时1s后，运行run
+                @Override
+                public void run() {
+                    startActivityAfterFinishThis(MainActivity.class);
+                }
+            }, Config.SPLASH_DEFAULT_DELAY_TIME);
+        }
+
+
+        postNext();
     }
 
+    private void postNext() {
+
+    }
 
 
     /**

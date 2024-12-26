@@ -118,10 +118,10 @@ public class TermServiceDialogFragment extends BaseViewModelDialogFragment<Fragm
         fragment.show(fragmentManager, TAG);
     }
 
-    @Override
-    protected View getLayoutView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dialog_term_service, container, false);
-    }
+//    @Override
+//    protected View getLayoutView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        return inflater.inflate(R.layout.fragment_dialog_term_service, container, false);
+//    }
 
 
     // 又是写法比较固定

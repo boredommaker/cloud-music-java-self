@@ -54,6 +54,9 @@ dependencies {
     implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.8.0"
     annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
 
+    //腾讯开源的高性能keyValue存储，用来替代系统的SharedPreferences
+    //https://github.com/Tencent/MMKV
+    implementation 'com.tencent:mmkv-static:+'
 
 
     // 引入其他 module
