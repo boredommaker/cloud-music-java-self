@@ -2,19 +2,31 @@ package com.example.cloud_music_java_self.component.guide.activity;
 
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import com.example.cloud_music_java_self.MainActivity;
 import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.component.guide.adapter.GuideAdapter;
+import com.example.cloud_music_java_self.config.Config;
 import com.example.cloud_music_java_self.databinding.ActivityGuideBinding;
 import com.example.cloud_music_java_self.util.Constant;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * 左右滚动的引导界面
@@ -23,6 +35,8 @@ import java.util.List;
  */
 public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> implements View.OnClickListener{
 
+
+    private static final String TAG = "GuideActivity";
     private GuideAdapter adapter;
 
 
@@ -95,11 +109,34 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
         }
         else if (v.getId() == R.id.experience_now) {
 
-            startActivityAfterFinishThis(MainActivity.class);
-
-            setShowGuide();
+//                startActivityAfterFinishThis(MainActivity.class);
+//
+//                setShowGuide();
+            testGet();
         }
 
+    }
+    private void testGet() {
+        Log.d(TAG, "testGet");
+        OkHttpClient client = new OkHttpClient();
+
+        String url = Config.ENDPOINT + "v1/sheets";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e(TAG, "get error: " + e.getLocalizedMessage());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                Log.d(TAG, "get success: " + response.body().string());
+            }
+        });
     }
 
     private void setShowGuide() {
