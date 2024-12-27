@@ -4,6 +4,7 @@ package com.example.cloud_music_java_self.component.guide.activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -22,6 +23,7 @@ import com.example.cloud_music_java_self.model.response.DetailResponse;
 import com.example.cloud_music_java_self.model.response.ListResponse;
 import com.example.cloud_music_java_self.util.Constant;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
+import com.example.superui.toast.SuperToast;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.example.cloud_music_java_self.component.sheet.model.Sheet;
 
@@ -225,15 +227,17 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
 //
 //                    }
 //                });
-        service.sheetDetail("ixuea", "1")
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ObserverAdapter<DetailResponse<Sheet>>() {
-                    @Override
-                    public void onNext(@NonNull DetailResponse<Sheet> sheetDetailResponse) {
-                        super.onNext(sheetDetailResponse);
-                    }
-                });
+//        service.sheetDetail("ixuea", "1")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new ObserverAdapter<DetailResponse<Sheet>>() {
+//                    @Override
+//                    public void onNext(@NonNull DetailResponse<Sheet> sheetDetailResponse) {
+//                        super.onNext(sheetDetailResponse);
+//                    }
+//                });
+//        Toast.makeText(getHostActivity(), "你好", Toast.LENGTH_SHORT).show();
+        SuperToast.success(R.string.about);
     }
 
     /**

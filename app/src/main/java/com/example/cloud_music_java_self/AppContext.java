@@ -3,6 +3,7 @@ package com.example.cloud_music_java_self;
 import android.app.Application;
 import android.util.Log;
 
+import com.example.superui.toast.SuperToast;
 import com.tencent.mmkv.MMKV;
 
 /**
@@ -22,6 +23,9 @@ public class AppContext extends Application {
     private void initMMKV() {
         String rootDir = MMKV.initialize(this);
         Log.d(TAG, "initMMKV: " + rootDir);
+
+        //初始化toast工具类
+        SuperToast.init(getApplicationContext());
     }
 
     @Override
