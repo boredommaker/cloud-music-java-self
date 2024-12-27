@@ -1,15 +1,38 @@
 package com.example.cloud_music_java_self.api;
 
+import com.example.cloud_music_java_self.activity.BaseLogicActivity;
 import com.example.cloud_music_java_self.component.observer.ObserverAdapter;
+import com.example.cloud_music_java_self.fragment.BaseLogicFragment;
 import com.example.cloud_music_java_self.model.response.BaseResponse;
 import com.example.cloud_music_java_self.util.ExceptionHandlerUtil;
 
+import io.reactivex.rxjava3.disposables.Disposable;
 import okhttp3.Response;
 
 /**
  * 网络请求Observer
  */
 public abstract class HttpObserver<T> extends ObserverAdapter<T> {
+    private final BaseLogicActivity activity;
+    private boolean isShowLoading;
+
+    public HttpObserver(BaseLogicActivity activity) {
+        super();
+        this.activity = activity;
+    }
+
+    public HttpObserver(BaseLogicActivity activity, boolean isShowLoading) {
+        super();
+        this.activity = activity;
+        this.isShowLoading = isShowLoading;
+    }
+
+    public HttpObserver(BaseLogicFragment fragment) {
+        super();
+        this.activity = (BaseLogicActivity) fragment.getActivity();
+        this.isShowLoading = true;
+    }
+
     /**
      * 请求成功
      *
@@ -33,7 +56,19 @@ public abstract class HttpObserver<T> extends ObserverAdapter<T> {
      * 请求结束，成功失败都会调用（调用前调用），使用在这里隐藏加载提示
      */
     public void onEnd() {
+        if (isShowLoading) {
+            activity.hideLoading();
+        }
+    }
 
+    @Override
+    public void onSubscribe(Disposable d) {
+        super.onSubscribe(d);
+
+        if (isShowLoading) {
+            //显示加载对话框
+            activity.showLoading();
+        }
     }
 
     @Override

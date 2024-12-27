@@ -252,21 +252,22 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
 //        }, 3000);
 //        showLoading(R.string.my_message);
 
-//        service.sheetDetail("ixuea", "99999")
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
+        service.sheetDetail("ixuea", "99999")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(new HttpObserver<DetailResponse<Sheet>>() {
-//                    @Override
-//                    public void onSucceeded(DetailResponse<Sheet> data) {
-//                        Log.d(TAG, "onSucceeded: " + data.getData().getTitle());
-//                    }
-//
-//                    @Override
-//                    public boolean onFailed(DetailResponse<Sheet> data, Throwable e) {
-//                        Log.e(TAG, "onFailed: " + e.getLocalizedMessage());
-//                        return true;// 返回true不需要自己写的util处理
-//                    }
-//                });
+                .subscribe(new HttpObserver<DetailResponse<Sheet>>(getHostActivity(), true) {
+                    @Override
+                    public void onSucceeded(DetailResponse<Sheet> data) {
+                        Log.d(TAG, "onSucceeded: " + data.getData().getTitle());
+                    }
+
+                    @Override
+                    public boolean onFailed(DetailResponse<Sheet> data, Throwable e) {
+                        Log.e(TAG, "onFailed: " + e.getLocalizedMessage());
+                        return false;// 返回true不需要自己写的util处理
+                    }
+                });
     }
 
     /**
