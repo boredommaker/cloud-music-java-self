@@ -1,6 +1,7 @@
 package com.example.cloud_music_java_self.api;
 
 
+import com.chuckerteam.chucker.api.ChuckerInterceptor;
 import com.example.cloud_music_java_self.AppContext;
 import com.example.cloud_music_java_self.config.Config;
 import com.example.cloud_music_java_self.util.JSONUtil;
@@ -46,6 +47,10 @@ public class NetworkModule {
 
             //添加到网络框架中
             okhttpClientBuilder.addInterceptor(loggingInterceptor);
+
+
+            //添加chucker实现应用内显示网络请求信息拦截器
+            okhttpClientBuilder.addInterceptor(new ChuckerInterceptor.Builder(AppContext.getInstance()).build());
         }
 
         return okhttpClientBuilder.build();

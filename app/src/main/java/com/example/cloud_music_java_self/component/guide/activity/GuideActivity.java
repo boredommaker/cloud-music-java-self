@@ -252,7 +252,7 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
 //        }, 3000);
 //        showLoading(R.string.my_message);
 
-        service.sheetDetail("ixuea", "99999")
+        service.sheetDetail("ixuea", "9999")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(new HttpObserver<DetailResponse<Sheet>>() {
