@@ -1,4 +1,4 @@
-package com.example.cloud_music_java_self.component.main;
+package com.example.cloud_music_java_self.component.main.tab;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

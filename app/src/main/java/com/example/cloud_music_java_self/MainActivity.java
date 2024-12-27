@@ -1,16 +1,18 @@
 package com.example.cloud_music_java_self;
 
-import android.content.Intent;
-
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
+import com.example.cloud_music_java_self.adapter.OnPageChangeListenerAdapter;
 import com.example.cloud_music_java_self.component.login.activity.LoginHomeActivity;
-import com.example.cloud_music_java_self.component.main.TabEntity;
+import com.example.cloud_music_java_self.component.main.adapter.MainAdapter;
+import com.example.cloud_music_java_self.component.main.tab.TabEntity;
 import com.example.cloud_music_java_self.databinding.ActivityMainBinding;
 import com.example.cloud_music_java_self.util.Constant;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 主界面
@@ -22,13 +24,14 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding> {
     private static final int[] indicatorTitles = new int[]{R.string.discovery, R.string.video, R.string.me, R.string.feed, R.string.live};
     private static final int[] indicatorIcons = new int[]{R.drawable.discovery, R.drawable.video, R.drawable.me, R.drawable.feed, R.drawable.live};
     private static final int[] indicatorSelectedIcons = new int[]{R.drawable.discovery_selected, R.drawable.video_selected, R.drawable.me_selected, R.drawable.feed_selected, R.drawable.live_selected};
-//    private MainAdapter adapter;
+    private MainAdapter adapter;
+    //    private MainAdapter adapter;
 
     @Override
     protected void initViews() {
         super.initViews();
         //状态栏透明，内容显示到状态栏
-        QMUIStatusBarHelper.translucent(this);
+//        QMUIStatusBarHelper.translucent(this);
 
         //缓存页面数量
         // 默认是缓存一个
@@ -56,10 +59,12 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding> {
     protected void initDatum() {
         super.initDatum();
 
-//        adapter = new MainAdapter(getHostActivity(), getSupportFragmentManager());
-//        binding.list.setAdapter(adapter);
-//
-//        adapter.setDatum(Arrays.asList(0, 1, 2, 3, 4, 5));
+        adapter = new MainAdapter(getHostActivity(), getSupportFragmentManager());
+        binding.list.setAdapter(adapter);
+
+        adapter.setDatum(Arrays.asList(0, 0, 0, 0, 0));
+
+
 
         String action = getIntent().getAction();
         if (Constant.ACTION_LOGIN.equals(action)) {
@@ -72,25 +77,25 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding> {
     protected void initListeners() {
         super.initListeners();
         //设置指示器切换监听器
-//        binding.indicator.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelect(int position) {
-//                binding.list.setCurrentItem(position);
-//            }
-//
-//            @Override
-//            public void onTabReselect(int position) {
-//
-//            }
-//        });
-//
+        binding.indicator.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                binding.list.setCurrentItem(position);
+            }
 
-//        binding.list.addOnPageChangeListener(new OnPageChangeListenerAdapter() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                super.onPageSelected(position);
-//                binding.indicator.setCurrentTab(position);
-//            }
-//        });
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+
+
+        binding.list.addOnPageChangeListener(new OnPageChangeListenerAdapter() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                binding.indicator.setCurrentTab(position);
+            }
+        });
     }
 }
