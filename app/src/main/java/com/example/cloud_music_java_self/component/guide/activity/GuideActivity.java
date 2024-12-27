@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.cloud_music_java_self.MainActivity;
 import com.example.cloud_music_java_self.R;
@@ -23,6 +24,7 @@ import com.example.cloud_music_java_self.model.response.DetailResponse;
 import com.example.cloud_music_java_self.model.response.ListResponse;
 import com.example.cloud_music_java_self.util.Constant;
 import com.example.cloud_music_java_self.util.SuperDarkUtil;
+import com.example.superui.loading.SuperRoundLoadingDialogFragment;
 import com.example.superui.toast.SuperToast;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.example.cloud_music_java_self.component.sheet.model.Sheet;
@@ -237,7 +239,17 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
 //                    }
 //                });
 //        Toast.makeText(getHostActivity(), "你好", Toast.LENGTH_SHORT).show();
-        SuperToast.success(R.string.about);
+//        SuperToast.success(R.string.about);
+//        SuperRoundLoadingDialogFragment dialogFragment = SuperRoundLoadingDialogFragment.newInstance("拼命加载中.");
+//        dialogFragment.show(getSupportFragmentManager(), "TAG");
+
+        binding.indicator.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                hideLoading();
+            }
+        }, 3000);
+        showLoading(R.string.my_message);
     }
 
     /**
