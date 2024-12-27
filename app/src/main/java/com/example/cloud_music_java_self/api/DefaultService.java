@@ -1,5 +1,6 @@
 package com.example.cloud_music_java_self.api;
 
+import com.example.cloud_music_java_self.component.ad.model.Ad;
 import com.example.cloud_music_java_self.component.comment.model.Comment;
 import com.example.cloud_music_java_self.component.sheet.model.Sheet;
 import com.example.cloud_music_java_self.component.sheet.model.SheetWrapper;
@@ -41,4 +42,13 @@ public interface DefaultService {
      */
     @GET("v1/comments")
     Observable<ListResponse<Comment>> comments();
+
+
+    /**
+     * 广告列表
+     *
+     * @return
+     */
+    @GET("v1/ads")
+    Observable<ListResponse<Ad>> ads(@Query(value = "position") int position);
 }

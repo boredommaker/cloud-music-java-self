@@ -76,12 +76,9 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
     protected void initDatum() {
         super.initDatum();
 
-        OkHttpClient okHttpClient = NetworkModule.provideOkHttpClient();
-        Retrofit retrofit = NetworkModule.provideRetrofit(okHttpClient);
-        service = retrofit.create(DefaultService.class);
-
-
-
+//        OkHttpClient okHttpClient = NetworkModule.provideOkHttpClient();
+//        Retrofit retrofit = NetworkModule.provideRetrofit(okHttpClient);
+//        service = retrofit.create(DefaultService.class);
 
 
 
