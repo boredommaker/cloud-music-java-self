@@ -2,7 +2,7 @@ package com.example.cloud_music_java_self.api;
 
 import com.example.cloud_music_java_self.component.observer.ObserverAdapter;
 import com.example.cloud_music_java_self.model.response.BaseResponse;
-import com.example.cloud_music_java_self.util.HttpUtil;
+import com.example.cloud_music_java_self.util.ExceptionHandlerUtil;
 
 import okhttp3.Response;
 
@@ -74,7 +74,7 @@ public abstract class HttpObserver<T> extends ObserverAdapter<T> {
             //返回true就表示外部手动处理错误
             //那我们框架内部就不用做任何事情了
         } else {
-            HttpUtil.handlerRequest(data, error);
+            ExceptionHandlerUtil.handlerRequest(data, error);
         }
     }
 

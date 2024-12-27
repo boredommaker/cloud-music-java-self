@@ -150,6 +150,11 @@ dependencies {
     //endregion
 
 
+    //apache common lang3工具包
+    //提供了StringUtils等这样的类
+    //http://commons.apache.org/proper/commons-lang/
+    implementation 'org.apache.commons:commons-lang3:+'
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity

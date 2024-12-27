@@ -34,4 +34,8 @@ public class AppContext extends Application {
         instance = this;
         initMMKV();
     }
+
+    public void logout() {
+
+    }
 }

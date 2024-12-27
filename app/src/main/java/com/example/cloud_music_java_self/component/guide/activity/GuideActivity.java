@@ -13,6 +13,7 @@ import com.example.cloud_music_java_self.MainActivity;
 import com.example.cloud_music_java_self.R;
 import com.example.cloud_music_java_self.activity.BaseViewModelActivity;
 import com.example.cloud_music_java_self.api.DefaultService;
+import com.example.cloud_music_java_self.api.HttpObserver;
 import com.example.cloud_music_java_self.api.NetworkModule;
 import com.example.cloud_music_java_self.component.comment.model.Comment;
 import com.example.cloud_music_java_self.component.guide.adapter.GuideAdapter;
@@ -243,13 +244,29 @@ public class GuideActivity extends BaseViewModelActivity<ActivityGuideBinding> i
 //        SuperRoundLoadingDialogFragment dialogFragment = SuperRoundLoadingDialogFragment.newInstance("拼命加载中.");
 //        dialogFragment.show(getSupportFragmentManager(), "TAG");
 
-        binding.indicator.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hideLoading();
-            }
-        }, 3000);
-        showLoading(R.string.my_message);
+//        binding.indicator.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                hideLoading();
+//            }
+//        }, 3000);
+//        showLoading(R.string.my_message);
+
+//        service.sheetDetail("ixuea", "99999")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new HttpObserver<DetailResponse<Sheet>>() {
+//                    @Override
+//                    public void onSucceeded(DetailResponse<Sheet> data) {
+//                        Log.d(TAG, "onSucceeded: " + data.getData().getTitle());
+//                    }
+//
+//                    @Override
+//                    public boolean onFailed(DetailResponse<Sheet> data, Throwable e) {
+//                        Log.e(TAG, "onFailed: " + e.getLocalizedMessage());
+//                        return true;// 返回true不需要自己写的util处理
+//                    }
+//                });
     }
 
     /**
