@@ -59,7 +59,7 @@ public class DiscoveryFragment extends BaseViewModelFragment<FragmentDiscoveryBi
     protected void initDatum() {
         super.initDatum();
         //创建适配器
-        adapter = new DiscoveryAdapter();
+        adapter = new DiscoveryAdapter(this);
 
         //设置适配器
         binding.list.setAdapter(adapter);

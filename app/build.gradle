@@ -181,6 +181,19 @@ dependencies {
 
 
 
+    //banner轮播图框架
+    //https://github.com/youth5201314/banner
+    implementation 'io.github.youth5201314:banner:2.2.2'
+
+    //图片加载框架，还引用他目的是，coil有些功能不好实现
+    //https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:+'
+    annotationProcessor 'com.github.bumptech.glide:compiler:+'
+
+    // 内存泄漏监测框架：https://github.com/square/leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
+
+
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
